@@ -1,24 +1,41 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../../components/Layout';
 import data from '../../utils/data';
+import { Store } from '../../utils/Store';
 
 export default function ProductScreen() {
+  const { state, dispatch } = useContext(Store);
+  const router = useRouter();
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
   if (!product) {
     return <div>Produt Not Found</div>;
   }
+
+  const addToCartHandler = () => {
+    const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      alert('Sorry. Product is out of stock');
+      return;
+    }
+
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    router.push('/cart');
+  };
+
   return (
     <Layout title={product.name}>
-      <div className="py-2 font-semibold text-slate-700">
+      <div className="py-2 font-semibold text-slate-700 mb-2">
         <Link href="/">back to Winky Menu</Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3 text-slate-700">
-        <div className="md:col-span-2">
+      <div className="grid  md:grid-cols-4 md:gap-3 text-slate-700">
+        <div className="md:col-span-2 mb-4">
           <Image
             src={product.image}
             alt={product.name}
@@ -27,16 +44,14 @@ export default function ProductScreen() {
             layout="responsive"
           ></Image>
         </div>
-        <div className="ml-6">
+        <div className="ml-6 mb-4">
           <ul>
             <li>
               <h1 className="text-lg">{product.name}</h1>
             </li>
             <li>Category: {product.category}</li>
             <li>Brand: {product.brand}</li>
-            <li>
-              {product.rating} of {product.numReviews} reviews
-            </li>
+
             <li>Description: {product.description}</li>
           </ul>
         </div>
@@ -45,7 +60,7 @@ export default function ProductScreen() {
             <div className="card p-5">
               <div className="mb-2 flex justify-between">
                 <div>Price</div>
-                <div>{product.price} kyats</div>
+                <div>{product.price} ကျပ်</div>
               </div>
               <div className="mb-2 flex justify-between">
                 <div>Status</div>
@@ -53,13 +68,20 @@ export default function ProductScreen() {
                   {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
                 </div>
               </div>
+              <button
+                className="primary-button w-full"
+                onClick={addToCartHandler}
+              >
+                Add to cart
+              </button>
             </div>
 
             <div className="card p-5 ">
               <ul>
                 <li>
-                  <span className="font-semibold">Address :</span> 76,Nawarat
-                  Street Maymyo, Mandalay, Myanmar
+                  <span className="font-semibold">Address :</span> အခန်း(၄)၊
+                  အမှတ်(၇၆)၊ နဝရတ်လမ်း၊ မန္တလေး-လားရှိုးလမ်းမကြီးအနီး၊
+                  ပဒေသာမြို့သစ် ၊ ပြင်ဦးလွင်မြို့။
                 </li>
                 <li>
                   <span className="font-semibold">Phone :</span> 09 45131 5999

@@ -25,7 +25,7 @@ export default function ProductItem({ product }) {
           </a>
         </Link>
         <p className="mb-2">{product.brand}</p>
-        <p>{product.price} kyats</p>
+        <p>{product.price} ကျပ်</p>
 
         <div className="mx-auto">
           <Link href={`/product/${product.slug}`}>
