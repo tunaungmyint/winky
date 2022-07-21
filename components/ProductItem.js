@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, addToCartHandler }) {
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
@@ -26,14 +26,13 @@ export default function ProductItem({ product }) {
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p>{product.price} ကျပ်</p>
-
-        <div className="mx-auto">
-          <Link href={`/product/${product.slug}`}>
-            <a>
-              <button className="primary-button w-full">See More</button>
-            </a>
-          </Link>
-        </div>
+        <button
+          className="primary-button"
+          type="button"
+          onClick={() => addToCartHandler(product)}
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );
