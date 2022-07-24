@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
@@ -58,7 +57,7 @@ function OrderScreen() {
       error,
       order,
       successPay,
-      loadingPay,
+      // loadingPay,
       loadingDeliver,
       successDeliver,
     },
@@ -254,7 +253,7 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>{itemsPrice}&nbsp;ကျပ်</div>
                   </div>
                 </li>{' '}
                 {/* <li>
@@ -272,34 +271,16 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>{totalPrice} &nbsp;ကျပ်</div>
                   </div>
                 </li>
                 {!isPaid && (
                   <li>
-                    {/* {isPending ? (
-                      <div>Loading...</div>
-                    ) : (
-                      <div className="w-full">
-                        <PayPalButtons
-                          createOrder={createOrder}
-                          onApprove={onApprove}
-                          onError={onError}
-                        ></PayPalButtons>
-                      </div>
-                    )}
-                    {loadingPay && <div>Loading...</div>} */}
-
-                    {isPending ? (
-                      <div>Loading...</div>
-                    ) : (
-                      <div className="w-full">
-                        createOrder={createOrder}
-                        onApprove={onApprove}
-                        onError={onError}
-                      </div>
-                    )}
-                    {loadingPay && <div>Loading...</div>}
+                    <div className="w-full">
+                      {createOrder}
+                      {onApprove}
+                      {onError}
+                    </div>
                   </li>
                 )}
                 {session.user.isAdmin && order.isPaid && !order.isDelivered && (

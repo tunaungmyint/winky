@@ -53,8 +53,8 @@ export default function PlaceOrderScreen() {
         })
       );
 
-      // router.push(`/order/${data._id}`);
-      router.push('/placeorder');
+      router.push(`/order/${data._id}`);
+      // router.push('/placeorder');
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));
