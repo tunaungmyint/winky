@@ -53,7 +53,8 @@ export default function PlaceOrderScreen() {
         })
       );
 
-      router.push(`/order/${data._id}`);
+      // router.push(`/order/${data._id}`);
+      router.push('/placeorder');
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));
@@ -66,7 +67,8 @@ export default function PlaceOrderScreen() {
       <h1 className="mb-4 text-xl">Place Order</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty.<Link href="/">Go shopping...</Link>
+          <h4 className="mb-4">ဝယ်ယူအားပေးမှုကို အထူးကျေးဇူးတင်ပါသည်။</h4>
+          Cart is empty. &nbsp;<Link href="/"> Go shopping...</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">

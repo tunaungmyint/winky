@@ -1,4 +1,5 @@
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+/* eslint-disable no-undef */
+// import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
@@ -46,7 +47,7 @@ function reducer(state, action) {
 function OrderScreen() {
   const { data: session } = useSession();
   // order/:id
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+  // const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
   const { query } = useRouter();
   const orderId = query.id;
@@ -67,44 +68,49 @@ function OrderScreen() {
     order: {},
     error: '',
   });
-  useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders/${orderId}`);
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
-      }
-    };
-    if (
-      !order._id ||
-      successPay ||
-      successDeliver ||
-      (order._id && order._id !== orderId)
-    ) {
-      fetchOrder();
-      if (successPay) {
-        dispatch({ type: 'PAY_RESET' });
-      }
-      if (successDeliver) {
-        dispatch({ type: 'DELIVER_RESET' });
-      }
-    } else {
-      const loadPaypalScript = async () => {
-        const { data: clientId } = await axios.get('/api/keys/paypal');
-        paypalDispatch({
-          type: 'resetOptions',
-          value: {
-            'client-id': clientId,
-            currency: 'USD',
-          },
-        });
-        paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
+  useEffect(
+    () => {
+      const fetchOrder = async () => {
+        try {
+          dispatch({ type: 'FETCH_REQUEST' });
+          const { data } = await axios.get(`/api/orders/${orderId}`);
+          dispatch({ type: 'FETCH_SUCCESS', payload: data });
+        } catch (err) {
+          dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+        }
       };
-      loadPaypalScript();
-    }
-  }, [order, orderId, paypalDispatch, successDeliver, successPay]);
+      if (
+        !order._id ||
+        successPay ||
+        successDeliver ||
+        (order._id && order._id !== orderId)
+      ) {
+        fetchOrder();
+        if (successPay) {
+          dispatch({ type: 'PAY_RESET' });
+        }
+        if (successDeliver) {
+          dispatch({ type: 'DELIVER_RESET' });
+        }
+      }
+      // else {
+      //   const loadPaypalScript = async () => {
+      //     const { data: clientId } = await axios.get('/api/keys/paypal');
+      //     paypalDispatch({
+      //       type: 'resetOptions',
+      //       value: {
+      //         'client-id': clientId,
+      //         currency: 'USD',
+      //       },
+      //     });
+      //     paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
+      //   };
+      //   loadPaypalScript();
+      // }
+    },
+    // [order, orderId, paypalDispatch, successDeliver, successPay]);
+    [order, orderId, successDeliver, successPay]
+  );
   const {
     shippingAddress,
     paymentMethod,
@@ -271,7 +277,7 @@ function OrderScreen() {
                 </li>
                 {!isPaid && (
                   <li>
-                    {isPending ? (
+                    {/* {isPending ? (
                       <div>Loading...</div>
                     ) : (
                       <div className="w-full">
@@ -280,6 +286,17 @@ function OrderScreen() {
                           onApprove={onApprove}
                           onError={onError}
                         ></PayPalButtons>
+                      </div>
+                    )}
+                    {loadingPay && <div>Loading...</div>} */}
+
+                    {isPending ? (
+                      <div>Loading...</div>
+                    ) : (
+                      <div className="w-full">
+                        createOrder={createOrder}
+                        onApprove={onApprove}
+                        onError={onError}
                       </div>
                     )}
                     {loadingPay && <div>Loading...</div>}
