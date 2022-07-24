@@ -43,7 +43,9 @@ export default function PaymentScreen() {
       <CheckoutWizard activeStep={2} />
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
         <h1 className="mb-4 text-xl">Payment Method</h1>
-        {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => (
+
+        {/* {['PayPal', 'Stripe', 'CashOnDelivery'].map((payment) => ( */}
+        {['CashOnDelivery'].map((payment) => (
           <div key={payment} className="mb-4">
             <input
               name="paymentMethod"
@@ -57,6 +59,9 @@ export default function PaymentScreen() {
             <label className="p-2" htmlFor={payment}>
               {payment}
             </label>
+            <div className="font-semibold text-gray-600">
+              အိမ်အရောက် ငွေချေစနစ်ဖြင့် ဝယ်ယူမည်။
+            </div>
           </div>
         ))}
         <div className="mb-4 flex justify-between">
@@ -67,7 +72,12 @@ export default function PaymentScreen() {
           >
             Back
           </button>
-          <button className="primary-button">Next</button>
+          <button
+            className="primary-button"
+            onClick={() => router.push('/placeorder')}
+          >
+            Next
+          </button>
         </div>
       </form>
     </Layout>
