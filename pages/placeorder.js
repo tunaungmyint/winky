@@ -156,7 +156,7 @@ export default function PlaceOrderScreen() {
                     onClick={PlaceOrderHandler}
                     className="primary-button w-full"
                   >
-                    {loading ? 'loading...' : 'Place Order'}
+                    {loading ? 'loading...' : 'ဝယ်ယူမည်'}
                   </button>
                 </li>
               </ul>
