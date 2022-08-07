@@ -23,14 +23,14 @@ export default function ShippingScreen() {
     setValue('fullName', shippingAddress.fullName);
     setValue('address', shippingAddress.address);
     setValue('city', shippingAddress.city);
-    setValue('postalCode', shippingAddress.postalCode);
-    setValue('country', shippingAddress.country);
+    setValue('phone', shippingAddress.phone);
+    setValue('email', shippingAddress.email);
   }, [setValue, shippingAddress]);
 
-  const submitHandler = ({ fullName, address, city, postalCode, country }) => {
+  const submitHandler = ({ fullName, address, city, phone, email }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
-      payload: { fullName, address, city, postalCode, country },
+      payload: { fullName, address, city, phone, email },
     });
     Cookies.set(
       'cart',
@@ -40,8 +40,8 @@ export default function ShippingScreen() {
           fullName,
           address,
           city,
-          postalCode,
-          country,
+          phone,
+          email,
         },
       })
     );
@@ -99,29 +99,29 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="phone">Phone Number</label>
           <input
             className="w-full"
-            id="postalCode"
-            {...register('postalCode', {
-              required: 'Please enter postal code',
+            id="phone"
+            {...register('phone', {
+              required: 'Please enter phone number',
             })}
           />
-          {errors.postalCode && (
-            <div className="text-red-500 ">{errors.postalCode.message}</div>
+          {errors.phone && (
+            <div className="text-red-500 ">{errors.phone.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="email">Email</label>
           <input
             className="w-full"
-            id="country"
-            {...register('country', {
-              required: 'Please enter country',
+            id="email"
+            {...register('email', {
+              required: 'Please enter email',
             })}
           />
-          {errors.country && (
-            <div className="text-red-500 ">{errors.country.message}</div>
+          {errors.email && (
+            <div className="text-red-500 ">{errors.email.message}</div>
           )}
         </div>
         <div className="mb-4 flex justify-between">

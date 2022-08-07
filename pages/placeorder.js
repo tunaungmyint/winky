@@ -77,8 +77,8 @@ export default function PlaceOrderScreen() {
               <h2 className="mb-2 text-lg">Shipping Address</h2>
               <div>
                 {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                {shippingAddress.country}
+                {shippingAddress.city}, {shippingAddress.phone},{' '}
+                {shippingAddress.email}
               </div>
               <div>
                 <Link href="/shipping">Edit</Link>

@@ -175,6 +175,10 @@ function OrderScreen() {
 
   return (
     <Layout title={`Order ${orderId}`}>
+      <div className="py-2 font-semibold text-slate-700 mb-2">
+        ဝယ်ယူမှုကို အထူးကျေးဇူးတင်ပါသည်။ ဆက်လက် ဝယ်ယူရန်
+        <Link href="/"> Winky Menu သို့ ပြန်သွားမည်။</Link>
+      </div>
       <h1 className="mb-4 text-xl">{`Order ${orderId}`}</h1>
       {loading ? (
         <div>Loading...</div>
@@ -187,8 +191,8 @@ function OrderScreen() {
               <h2 className="mb-2 text-lg">Shipping Address</h2>
               <div>
                 {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                {shippingAddress.country}
+                {shippingAddress.city}, {shippingAddress.phone},{' '}
+                {shippingAddress.email}
               </div>
               {isDelivered ? (
                 <div className="alert-success">Delivered at {deliveredAt}</div>
