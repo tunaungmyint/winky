@@ -82,14 +82,20 @@ export default function AdminProdcutsScreen() {
                     <tr key={product._id} className="border-b">
                       <td className=" p-5 ">{product._id.substring(20, 24)}</td>
                       <td className=" p-5 ">{product.name}</td>
-                      <td className=" p-5 ">${product.price}</td>
+                      <td className=" p-5 ">{product.price} ကျပ်</td>
                       <td className=" p-5 ">{product.category}</td>
                       <td className=" p-5 ">{product.countInStock}</td>
                       <td className=" p-5 ">{product.rating}</td>
                       <td className=" p-5 ">
-                        <Link href={`/admin/product/${product._id}`}>Edit</Link>
+                        <Link href={`/admin/product/${product._id}`}>
+                          <a type="button" className="default-button">
+                            Edit
+                          </a>
+                        </Link>
                         &nbsp;
-                        <button>Delete</button>
+                        <button className="default-button" type="button">
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
