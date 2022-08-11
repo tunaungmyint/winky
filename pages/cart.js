@@ -110,7 +110,7 @@ function CartScreen() {
                   className="primary-button w-full"
                   onClick={() => router.push('login?redirect=/shipping')}
                 >
-                  CheckOut
+                  မှာယူမည်။
                 </button>
               </li>
             </ul>

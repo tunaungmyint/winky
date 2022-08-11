@@ -22,15 +22,15 @@ export default function ShippingScreen() {
   useEffect(() => {
     setValue('fullName', shippingAddress.fullName);
     setValue('address', shippingAddress.address);
-    setValue('city', shippingAddress.city);
+    // setValue('city', shippingAddress.city);
     setValue('phone', shippingAddress.phone);
-    setValue('email', shippingAddress.email);
+    // setValue('email', shippingAddress.email);
   }, [setValue, shippingAddress]);
 
-  const submitHandler = ({ fullName, address, city, phone, email }) => {
+  const submitHandler = ({ fullName, address, phone }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
-      payload: { fullName, address, city, phone, email },
+      payload: { fullName, address, phone },
     });
     Cookies.set(
       'cart',
@@ -39,9 +39,8 @@ export default function ShippingScreen() {
         shippingAddress: {
           fullName,
           address,
-          city,
+
           phone,
-          email,
         },
       })
     );
@@ -85,7 +84,7 @@ export default function ShippingScreen() {
             <div className="text-red-500">{errors.address.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="city">City</label>
           <input
             className="w-full"
@@ -97,7 +96,7 @@ export default function ShippingScreen() {
           {errors.city && (
             <div className="text-red-500 ">{errors.city.message}</div>
           )}
-        </div>
+        </div> */}
         <div className="mb-4">
           <label htmlFor="phone">Phone Number</label>
           <input
@@ -111,7 +110,7 @@ export default function ShippingScreen() {
             <div className="text-red-500 ">{errors.phone.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="email">Email</label>
           <input
             className="w-full"
@@ -123,7 +122,7 @@ export default function ShippingScreen() {
           {errors.email && (
             <div className="text-red-500 ">{errors.email.message}</div>
           )}
-        </div>
+        </div> */}
         <div className="mb-4 flex justify-between">
           <button className="primary-button">Next</button>
         </div>
