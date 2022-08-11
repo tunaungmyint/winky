@@ -191,8 +191,7 @@ function OrderScreen() {
               <h2 className="mb-2 text-lg">Shipping Address</h2>
               <div>
                 {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                {shippingAddress.city}, {shippingAddress.phone},{' '}
-                {shippingAddress.email}
+                {shippingAddress.phone}
               </div>
               {isDelivered ? (
                 <div className="alert-success">Delivered at {deliveredAt}</div>
