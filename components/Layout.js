@@ -10,6 +10,7 @@ import { signOut, useSession } from 'next-auth/react';
 import 'react-toastify/dist/ReactToastify.css';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
+import { ShoppingCartIcon, UserIcon } from '@heroicons/react/outline';
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -51,15 +52,18 @@ export default function Layout({ title, children }) {
                 <span className="ml-5">Winky Food Family</span>
               </a>
             </Link>
-            <div>
+            <div className="flex justify-center items-center">
               <Link href="/cart">
                 <a className="p-2">
-                  Cart
-                  {cartItemsCount > 0 && (
-                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                      {cartItemsCount}
-                    </span>
-                  )}
+                  <div className="flex mr-3">
+                    {' '}
+                    <ShoppingCartIcon className="h-5 w-5 mr-1" /> Cart
+                    {cartItemsCount > 0 && (
+                      <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                        {cartItemsCount}
+                      </span>
+                    )}
+                  </div>
                 </a>
               </Link>
 
@@ -68,7 +72,9 @@ export default function Layout({ title, children }) {
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block z-10">
                   <Menu.Button className="text-amber-600">
-                    {session.user.name}
+                    <div className="flex">
+                      <UserIcon className="h-5 w-5 mr-1" /> {session.user.name}
+                    </div>
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg">
                     <Menu.Item>
@@ -117,8 +123,8 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex h-10 justify-center items-center shadow-inner mt-4">
-          <p>Copyright © 2022 Winky</p>
+        <footer className="flex justify-center items-center shadow-inner p-5 flex-col bg-gray-800">
+          <p className="text-white m-4">Copyright © 2022 Winky </p>
         </footer>
       </div>
     </>

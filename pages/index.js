@@ -6,6 +6,7 @@ import ProductItem from '../components/ProductItem';
 import Product from '../models/Product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
+import Address from './address';
 
 export default function Home({ products }) {
   const { state, dispatch } = useContext(Store);
@@ -35,6 +36,7 @@ export default function Home({ products }) {
           ></ProductItem>
         ))}
       </div>
+      <Address />
     </Layout>
   );
 }

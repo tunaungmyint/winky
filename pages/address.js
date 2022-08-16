@@ -1,28 +1,53 @@
 import React from 'react';
-import Layout from '../components/Layout';
+
 import Image from 'next/image';
+import { PhoneIcon, LocationMarkerIcon } from '@heroicons/react/outline';
 
 export default function Address() {
   return (
-    <Layout title="Address">
-      <div className="grid md:grid-cols-12 md:gap-2">
-        <div className="rounded-lg shadow-lg m-5 p-5 md:col-span-4 ">
-          <h3 className="text-gray-700 font-semibold mb-4">Address</h3>
-          <p className="mb-2"> နဝရတ်လမ်း၊ ရပ်ကွက်ကြီး(၄)၊ ပြင်ဦးလွင်မြို့</p>
-          <p> 09 451 315 999</p>
-        </div>
-
-        <div className="rounded-lg shadow-lg m-5 p-5 md:col-span-8">
-          <h3 className="text-gray-700 font-semibold mb-4">Google Map</h3>
-          <Image
-            src="/images/address1.png"
-            alt="Address photo"
-            width={640}
-            height={320}
-            layout="responsive"
-          ></Image>
-        </div>
+    <div className="grid md:grid-cols-12 md:gap-2">
+      <div className="rounded-lg shadow-lg m-5 p-5 md:col-span-4 bg-gray-700">
+        <h3 className="text-white font-semibold mb-4 text-lg">
+          <LocationMarkerIcon className="h-5 w-5 text-white inline-block" />
+          လိပ်စာ
+        </h3>
+        <h3 className="text-white font-semibold mb-4 text-lg">
+          WINKY&apos;s Foods Family{' '}
+        </h3>
+        <p className="mb-2 text-white">မန္တလေး-လားရှိုးလမ်းမကြီးအနီး၊</p>
+        <p className="mb-2 text-white">
+          နဝရတ်လမ်း (Power Sun restaurant ဘေးလမ်း)၊
+        </p>
+        <p className="mb-2 text-white"> Ruby Mart အနီး၊</p>
+        <p className="mb-2 text-white">မြမဥ္ဇူ လေးမျက်နှာဘုရားအနီး၊</p>
+        <p className="mb-2 text-white">ပြင်ဦးလွင်မြို့</p>
+        <p className="mb-2 text-white">
+          လင်းထက် ကိုယ်ပိုင်အထက်တန်းကျောင်းရှေ့၊
+        </p>
+        <p className="text-white">
+          <PhoneIcon className="h-5 w-5 text-white inline-block" /> 09 259 053
+          432{' '}
+        </p>
+        <p className="text-white">
+          <PhoneIcon className="h-5 w-5 text-white inline-block" /> 09 451 315
+          999{' '}
+        </p>
+        <p className="text-white">
+          <PhoneIcon className="h-5 w-5 text-white inline-block" /> 09 798 103
+          002{' '}
+        </p>
       </div>
-    </Layout>
+
+      <div className="rounded-lg shadow-lg m-5 p-5 md:col-span-8 bg-gray-700">
+        <h3 className="text-white font-semibold mb-4">Google Map</h3>
+        <Image
+          src="/images/address1.png"
+          alt="Address photo"
+          width={540}
+          height={220}
+          layout="responsive"
+        ></Image>
+      </div>
+    </div>
   );
 }
