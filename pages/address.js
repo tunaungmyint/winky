@@ -6,7 +6,7 @@ import { PhoneIcon, LocationMarkerIcon } from '@heroicons/react/outline';
 export default function Address() {
   return (
     <div className="grid md:grid-cols-12 md:gap-2">
-      <div className="rounded-lg shadow-lg mt-5 mb-5 pt-5 pl-5 md:col-span-4 bg-gray-700">
+      <div className="rounded-lg shadow-lg mt-5 mb-5 pt-5 pb-5 pl-5 md:col-span-4 bg-gray-700">
         <h3 className="text-white font-semibold mb-4 text-lg">
           <LocationMarkerIcon className="h-5 w-5 text-white inline-block" />
           လိပ်စာ
