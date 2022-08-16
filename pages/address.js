@@ -39,12 +39,11 @@ export default function Address() {
       </div>
 
       <div className="rounded-lg shadow-lg m-5 p-5 md:col-span-8 bg-gray-700">
-        <h3 className="text-white font-semibold mb-4">Google Map</h3>
         <Image
           src="/images/address1.png"
           alt="Address photo"
-          width={540}
-          height={220}
+          width={640}
+          height={320}
           layout="responsive"
         ></Image>
       </div>
