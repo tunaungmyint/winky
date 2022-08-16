@@ -6,7 +6,7 @@ import { PhoneIcon, LocationMarkerIcon } from '@heroicons/react/outline';
 export default function Address() {
   return (
     <div className="grid md:grid-cols-12 md:gap-2">
-      <div className="rounded-lg shadow-lg mt-2 mb-2 pt-2 pb-2 pl-2 md:col-span-4 bg-gray-700">
+      <div className="rounded-lg shadow-lg mt-2 mb-2 md:p-6 p-4 md:col-span-4 bg-gray-700">
         <h3 className="text-white font-semibold mb-4 text-lg">
           <LocationMarkerIcon className="h-5 w-5 text-white inline-block" />
           လိပ်စာ
@@ -20,10 +20,10 @@ export default function Address() {
         </p>
         <p className="mb-2 text-white"> Ruby Mart အနီး၊</p>
         <p className="mb-2 text-white">မြမဥ္ဇူ လေးမျက်နှာဘုရားအနီး၊</p>
-        <p className="mb-2 text-white">ပြင်ဦးလွင်မြို့</p>
         <p className="mb-2 text-white">
           လင်းထက် ကိုယ်ပိုင်အထက်တန်းကျောင်းရှေ့၊
         </p>
+        <p className="mb-2 text-white">ပြင်ဦးလွင်မြို့</p>
         <p className="text-white">
           <PhoneIcon className="h-5 w-5 text-white inline-block" /> 09 259 053
           432{' '}
@@ -38,7 +38,7 @@ export default function Address() {
         </p>
       </div>
 
-      <div className="rounded-lg shadow-lg m-2 p-2 md:m-5 md:p-5 md:col-span-8 bg-gray-700">
+      <div className="rounded-lg shadow-lg  p-2 md:m-5 md:p-5 md:col-span-8 bg-gray-700">
         <Image
           src="/images/address1.jpg"
           alt="Address photo"

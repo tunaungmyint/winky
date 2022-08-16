@@ -123,8 +123,8 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex justify-center items-center shadow-inner p-5 flex-col bg-gray-800">
-          <p className="text-white m-4">Copyright © 2022 Winky </p>
+        <footer className="flex justify-center items-center shadow-inner p-5 bg-gray-700 rounded-lg m-3">
+          <p className="text-white ">Copyright © 2022 Winky </p>
         </footer>
       </div>
     </>
