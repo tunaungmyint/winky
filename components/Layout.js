@@ -40,7 +40,7 @@ export default function Layout({ title, children }) {
 
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
-          <nav className="flex h-12 items-center px-4 justify-between shadow-md">
+          <nav className="flex  items-center px-4 py-2 justify-between shadow-md">
             <Link href="/">
               <a className="text-lg font-bold flex justify-center items-center">
                 <Image
